@@ -140,10 +140,6 @@ button {
   filter: invert(0%) sepia(95%) saturate(21%) hue-rotate(2deg) brightness(101%) contrast(107%);
 }
 
-.copied {
-  display: none;
-}
-
 .rate-box {
   height: 28px;
   width: 10px;
@@ -162,4 +158,20 @@ button {
 }
 .green {
   background-color: green;
+}
+
+.start {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0s linear;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
 }

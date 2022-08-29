@@ -8,6 +8,7 @@ function App() {
   const [slider, setSlider] = useState(0)
   const [settings, setSettings] = useState({ upper: false, lower: false, numbers: false, symbols: false })
   const [rating, setRating] = useState(null)
+  const [copied, setCopied] = useState('start')
 
   const ratingScale = {
     1: { name: 'TOO WEAK!', color: 'red' },
@@ -81,6 +82,15 @@ function App() {
     setRating(Math.floor(rating))
   }
 
+  function copyPassword() {
+    if (!password) { return alert('Generate password first!') }
+    navigator.clipboard.writeText(password)
+    setCopied('visible')
+    setTimeout(() => {
+      setCopied('hidden')
+    }, 2000);
+  }
+
   return (
     <>
       <header className="heading">
@@ -91,8 +101,8 @@ function App() {
           <section className="password-display flex justify">
             <p>{!password ? 'P4$5W0rD!' : password}</p>
             <div className='flex gap10'>
-              <p className='copied'>COPIED</p>
-              <img className='copy-password' onClick={() => navigator.clipboard.writeText(password)} src={copyIMG} alt="copy" />
+              <p className={copied}>COPIED</p>
+              <img className='copy-password' onClick={copyPassword} src={copyIMG} alt="copy" />
             </div>
           </section>
         </div>
@@ -141,7 +151,7 @@ function App() {
             <button onClick={checkAndGenerate}>GENERATE<img className='arrow-right' src={arrowimg} alt="arrow right" /></button>
           </section>
         </div>
-      </div >
+      </div>
     </>
 
   )
