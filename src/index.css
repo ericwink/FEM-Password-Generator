@@ -82,6 +82,10 @@ select {
   justify-content: space-between;
 }
 
+.gap10 {
+  gap: 10px;
+}
+
 /*styles*/
 input[type="range"] {
   width: 100%;
@@ -129,4 +133,33 @@ button {
 .arrow-right {
   display: inline;
   margin-left: 5px;
+}
+
+.copy-password:hover {
+  cursor: pointer;
+  filter: invert(0%) sepia(95%) saturate(21%) hue-rotate(2deg) brightness(101%) contrast(107%);
+}
+
+.copied {
+  display: none;
+}
+
+.rate-box {
+  height: 28px;
+  width: 10px;
+  margin-left: 5px;
+  border: 1px solid black;
+}
+
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: yellow;
+}
+.orange {
+  background-color: orange;
+}
+.green {
+  background-color: green;
 }
