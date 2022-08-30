@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
 import { useState } from 'react'
-import arrowimg from './images/icon-arrow-right.svg'
-import copyIMG from './images/icon-copy.svg'
+import CheckBoxes from './components/CheckBoxes'
+import Generate from './components/Generate'
+import PasswordDisplay from './components/PasswordDisplay'
+import Slider from './components/Slider'
+import StrengthRating from './components/StrenghRating'
 
 function App() {
   const [password, setPassword] = useState(null)
@@ -25,14 +27,13 @@ function App() {
     setSettings({ ...settings, [e.target.name]: e.target.checked })
   }
 
-  //global string values to use in generating a password
-  const lowercase = 'abcdefghijklmnopqrstuvwxyz'
-  const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  const numbers = '1234567890'
-  const symbols = '!@#$%^&*()'
-
   //evaluate which options the user has checked, and concat global string values to set password characters
   function setString() {
+    //string values to use in generating a password
+    const lowercase = 'abcdefghijklmnopqrstuvwxyz'
+    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const numbers = '1234567890'
+    const symbols = '!@#$%^&*()'
     let passString = ''
     if (settings.upper) { passString = passString + uppercase }
     if (settings.lower) { passString = passString + lowercase }
@@ -97,59 +98,14 @@ function App() {
         <h1>Password Generator</h1>
       </header>
       <div className="container flex flex-col">
-        <div className="sub-container">
-          <section className="password-display flex justify">
-            <p>{!password ? 'P4$5W0rD!' : password}</p>
-            <div className='flex gap10'>
-              <p className={copied}>COPIED</p>
-              <img className='copy-password' onClick={copyPassword} src={copyIMG} alt="copy" />
-            </div>
-          </section>
+        <div className="sub-container-1">
+          <PasswordDisplay password={password} copied={copied} copyPassword={copyPassword} />
         </div>
-        <div className="sub-container flex flex-col">
-          <section className="length-select flex flex-col">
-            <div className='char-display flex justify'>
-              <p>Character Length</p>
-              <p>{slider}</p>
-            </div>
-            <div>
-              <input type="range" value={slider} onChange={(e) => setSlider(e.target.value)} id='charnum' name='charnum' min='0' max='20' step='1' />
-            </div>
-          </section>
-          <section className="checkboxes">
-            <div>
-              <input type="checkbox" name="upper" id="upper" onChange={(e) => updateSettings(e)} />
-              <label htmlFor="upper">Include Uppercase Letters</label>
-            </div>
-            <div>
-              <input type="checkbox" name="lower" id="lower" onChange={(e) => updateSettings(e)} />
-              <label htmlFor="lower">Include Lowercase Letters</label>
-            </div>
-            <div>
-              <input type="checkbox" name="numbers" id="numbers" onChange={(e) => updateSettings(e)} />
-              <label htmlFor="numbers">Include Numbers</label>
-            </div>
-            <div>
-              <input type="checkbox" name="symbols" id="symbols" onChange={(e) => updateSettings(e)} />
-              <label htmlFor="symbols">Include Symbols</label>
-            </div>
-          </section>
-          <section className="strength-check flex justify">
-            <p>Strength</p>
-            <div className='flex'>
-              {!rating ? null : <p>{ratingScale[rating].name}</p>}
-              <div className='flex'>
-                <div className={!rating ? 'rate-box' : 'rate-box ' + ratingScale[rating].color}></div>
-                <div className={!rating || rating < 3 ? 'rate-box' : 'rate-box ' + ratingScale[rating].color}></div>
-                <div className={!rating || rating < 5 ? 'rate-box' : 'rate-box ' + ratingScale[rating].color}></div>
-                <div className={!rating || rating < 7 ? 'rate-box' : 'rate-box ' + ratingScale[rating].color}></div>
-              </div>
-            </div>
-
-          </section>
-          <section className="generate">
-            <button onClick={checkAndGenerate}>GENERATE<img className='arrow-right' src={arrowimg} alt="arrow right" /></button>
-          </section>
+        <div className="sub-container-2 flex flex-col flex1">
+          <Slider slider={slider} setSlider={setSlider} />
+          <CheckBoxes updateSettings={updateSettings} />
+          <StrengthRating rating={rating} ratingScale={ratingScale} />
+          <Generate checkAndGenerate={checkAndGenerate} />
         </div>
       </div>
     </>
@@ -158,12 +114,3 @@ function App() {
 }
 
 export default App
-
-//display four boxes
-//set color of boxes by rating
-//too weak, first is red
-//weak, two are orange
-//medium, three are yellow
-//strong, four are green
-
-//create one box and set color by rating
