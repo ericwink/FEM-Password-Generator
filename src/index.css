@@ -240,6 +240,7 @@ button {
 }
 
 button:hover {
+  cursor: pointer;
   background-color: var(--clr-neutral-600);
   color: var(--clr-primary-400);
   border: 1px solid var(--clr-primary-400);
