@@ -201,7 +201,6 @@ input[type="range"] {
   gap: 5px;
 }
 
-.copy-container img:hover,
 .copy-container img:active {
   cursor: pointer;
   filter: invert(0%) sepia(95%) saturate(21%) hue-rotate(2deg) brightness(101%) contrast(107%);
@@ -240,7 +239,6 @@ button {
   border: 1px solid transparent;
 }
 
-button:hover,
 button:active {
   cursor: pointer;
   background-color: var(--clr-neutral-600);
@@ -335,7 +333,6 @@ input[type="checkbox"] {
   width: 20px;
 }
 
-input[type="checkbox"]:hover,
 input[type="checkbox"]:active {
   border: 1px solid var(--clr-primary-400);
   cursor: pointer;
@@ -391,11 +388,11 @@ input[type="range"]::-webkit-slider-thumb {
   margin-top: -8px;
 }
 
-input[type="range"]::-webkit-slider-thumb:hover,
 input[type="range"]::-webkit-slider-thumb:active {
   background-color: var(--clr-neutral-900);
   border: 1px solid var(--clr-primary-400);
 }
+
 input[type="range"]::-moz-range-thumb {
   -webkit-appearance: none;
   height: 25px;
@@ -406,7 +403,6 @@ input[type="range"]::-moz-range-thumb {
   margin-top: -8px;
 }
 
-input[type="range"]::-moz-range-thumb:hover,
 input[type="range"]::-moz-range-thumb:active {
   background-color: var(--clr-neutral-900);
   border: 1px solid var(--clr-primary-400);
@@ -421,8 +417,41 @@ input[type="range"]::-ms-thumb {
   margin-top: -8px;
 }
 
-input[type="range"]::-ms-thumb:hover,
 input[type="range"]::-ms-thumb:active {
   background-color: var(--clr-neutral-900);
   border: 1px solid var(--clr-primary-400);
+}
+
+@media (hover: hover) {
+  .copy-container img:hover {
+    cursor: pointer;
+    filter: invert(0%) sepia(95%) saturate(21%) hue-rotate(2deg) brightness(101%) contrast(107%);
+  }
+
+  button:hover {
+    cursor: pointer;
+    background-color: var(--clr-neutral-600);
+    color: var(--clr-primary-400);
+    border: 1px solid var(--clr-primary-400);
+  }
+
+  input[type="checkbox"]:hover {
+    border: 1px solid var(--clr-primary-400);
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: var(--clr-neutral-900);
+    border: 1px solid var(--clr-primary-400);
+  }
+
+  input[type="range"]::-moz-range-thumb:hover {
+    background-color: var(--clr-neutral-900);
+    border: 1px solid var(--clr-primary-400);
+  }
+
+  input[type="range"]::-ms-thumb:hover {
+    background-color: var(--clr-neutral-900);
+    border: 1px solid var(--clr-primary-400);
+  }
 }
