@@ -291,6 +291,10 @@ svg {
   transition: visibility 0s 2s, opacity 2s linear;
 }
 
+#charnumlabel {
+  display: none;
+}
+
 /*responsive styling*/
 @media (max-width: 550px) {
   .container {
@@ -322,132 +326,74 @@ svg {
 }
 
 /*checkbox style*/
-input[type="checkbox"] {
-  border: 1px solid var(--clr-neutral-200);
-  appearance: none;
-  height: 20px;
-  width: 20px;
-}
-
-input[type="checkbox"]:hover {
-  border: 1px solid var(--clr-primary-400);
-  cursor: pointer;
-}
-
-input[type="checkbox"]:checked {
-  appearance: none;
-  height: 20px;
-  width: 20px;
-  content: url(./assets/images/icon-check.svg);
-  background-color: var(--clr-primary-400);
-  border: 1px solid var(--clr-primary-400);
-}
-
-label {
-  margin-left: 20px;
-}
-
-/*slider style*/
 input[type="range"] {
-  width: 100%;
-  margin: 9.8px 0;
-  background-color: transparent;
+  position: relative;
   -webkit-appearance: none;
-}
-input[type="range"]:focus {
+  -moz-appearance: none;
+  display: block;
+  width: 100%;
+  height: 8px;
+  background-color: var(--clr-neutral-900);
   outline: none;
 }
+
+/*reset per browser*/
 input[type="range"]::-webkit-slider-runnable-track {
-  background: var(--clr-primary-400);
-  border-radius: 1.3px;
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-}
-input[type="range"]::-webkit-slider-thumb {
-  margin-top: -10px;
-  width: 28px;
-  height: 28px;
-  background: var(--clr-neutral-200);
-  border: 1px solid var(--clr-primary-400);
-  border-radius: 50px;
-  cursor: pointer;
   -webkit-appearance: none;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-  background-color: var(--clr-neutral-900);
-}
-
-input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: var(--clr-primary-400);
+  height: 8px;
 }
 input[type="range"]::-moz-range-track {
-  background: var(--clr-primary-400);
-  border: 0.2px solid var(--clr-neutral-200);
-  border-radius: 1.3px;
-  width: 100%;
-  height: 8.4px;
+  -moz-appearance: none;
+  height: 8px;
+}
+input[type="range"]::-ms-track {
+  appearance: none;
+  height: 8px;
+}
+
+/*thumb per browser*/
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  background-color: var(--clr-neutral-200);
+  border-radius: 50%;
   cursor: pointer;
+  margin-top: -8px;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover,
+input[type="range"]::-webkit-slider-thumb:active {
+  background-color: var(--clr-neutral-900);
+  border: 1px solid var(--clr-primary-400);
 }
 input[type="range"]::-moz-range-thumb {
-  width: 28px;
-  height: 28px;
-  background: var(--clr-neutral-200);
-  border: 1px solid var(--clr-primary-400);
-  border-radius: 50px;
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  background-color: var(--clr-neutral-200);
+  border-radius: 50%;
   cursor: pointer;
+  margin-top: -8px;
 }
 
-input[type="range"]::-moz-range-thumb:hover {
+input[type="range"]::-moz-range-thumb:hover,
+input[type="range"]::-moz-range-thumb:active {
   background-color: var(--clr-neutral-900);
-}
-
-input[type="range"]::-ms-track {
-  background: transparent;
-  border-color: transparent;
-  border-width: 10.8px 0;
-  color: transparent;
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-}
-input[type="range"]::-ms-fill-lower {
-  background: var(--clr-primary-400);
-  border: 0.2px solid var(--clr-neutral-200);
-  border-radius: 2.6px;
-}
-input[type="range"]::-ms-fill-upper {
-  background: var(--clr-primary-400);
-  border: 0.2px solid var(--clr-neutral-200);
-  border-radius: 2.6px;
+  border: 1px solid var(--clr-primary-400);
 }
 input[type="range"]::-ms-thumb {
-  width: 28px;
-  height: 28px;
-  background: var(--clr-neutral-200);
-  border: 1px solid var(--clr-primary-400);
-  border-radius: 50px;
+  appearance: none;
+  height: 25px;
+  width: 25px;
+  background-color: var(--clr-neutral-200);
+  border-radius: 50%;
   cursor: pointer;
-  margin-top: 0px;
-  /*Needed to keep the Edge thumb centred*/
+  margin-top: -8px;
 }
 
-input[type="range"]::-ms-thumb:hover {
-  background: var(--clr-neutral-900);
-}
-
-input[type="range"]:focus::-ms-fill-lower {
-  background: var(--clr-primary-400);
-}
-input[type="range"]:focus::-ms-fill-upper {
-  background: var(--clr-primary-400);
-}
-
-@supports (-ms-ime-align: auto) {
-  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
-  input[type="range"] {
-    margin: 0;
-    /*Edge starts the margin from the thumb, not the track as other browsers do*/
-  }
+input[type="range"]::-ms-thumb:hover,
+input[type="range"]::-ms-thumb:active {
+  background-color: var(--clr-neutral-900);
+  border: 1px solid var(--clr-primary-400);
 }
