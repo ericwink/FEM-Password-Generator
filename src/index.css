@@ -201,7 +201,8 @@ input[type="range"] {
   gap: 5px;
 }
 
-.copy-container img:hover {
+.copy-container img:hover,
+.copy-container img:active {
   cursor: pointer;
   filter: invert(0%) sepia(95%) saturate(21%) hue-rotate(2deg) brightness(101%) contrast(107%);
 }
@@ -239,7 +240,8 @@ button {
   border: 1px solid transparent;
 }
 
-button:hover {
+button:hover,
+button:active {
   cursor: pointer;
   background-color: var(--clr-neutral-600);
   color: var(--clr-primary-400);
@@ -333,7 +335,8 @@ input[type="checkbox"] {
   width: 20px;
 }
 
-input[type="checkbox"]:hover {
+input[type="checkbox"]:hover,
+input[type="checkbox"]:active {
   border: 1px solid var(--clr-primary-400);
   cursor: pointer;
 }
